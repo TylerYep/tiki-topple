@@ -108,7 +108,8 @@ class Game:
             player.actions = list(STARTING_ACTIONS)
             player.goal = generate_goal()
         print("\nScores:")
-        print({f"Player {player.player_id}": player.score for player in self.players})
+        for player in self.players:
+            print(f"Player {player.player_id}: {player.score}")
         print()
 
     def get_winning_player(self) -> Player:

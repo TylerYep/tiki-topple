@@ -14,6 +14,9 @@ class Tiki(str, Enum):
     AKAMAI = "AKAMAI"
     NANI = "NANI"
 
+    def __repr__(self) -> str:
+        return self.value
+
 
 class Action(str, Enum):
     UP_ONE = "+1"
