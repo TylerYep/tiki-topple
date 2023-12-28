@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from enum import Enum
+from typing import override
 
 
 class Tiki(str, Enum):
@@ -14,6 +15,7 @@ class Tiki(str, Enum):
     AKAMAI = "AKAMAI"
     NANI = "NANI"
 
+    @override
     def __repr__(self) -> str:
         return self.value
 

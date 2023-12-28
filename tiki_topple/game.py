@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import random
 from dataclasses import dataclass, field
+from typing import override
 
 from tiki_topple.const import ID, STARTING_ACTIONS, TIKI_GROUPS, Goal
 from tiki_topple.enums import Action, Tiki
@@ -97,6 +98,7 @@ class Game:
     current_turn: ID
     tikis: list[Tiki] = field(default_factory=list)
 
+    @override
     def __str__(self) -> str:
         tikis = " | ".join([tiki.value for tiki in self.tikis])
         return f"Tikis: {tikis}"
