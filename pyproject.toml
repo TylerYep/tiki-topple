@@ -1,0 +1,84 @@
+[project]
+name = "tiki-topple"
+version = "0.0.1"
+description = "Tiki Topple"
+authors = [
+    { name = "Tyler Yep", email = "tyep@cs.stanford.edu" },
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.13",
+]
+requires-python = ">=3.13"
+
+[dependency-groups]
+dev = [
+    "mypy",
+    "pre-commit",
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "types-setuptools",
+]
+
+[project.urls]
+Homepage = "https://github.com/tyleryep/tiki-topple"
+
+[build-system]
+requires = [
+    "setuptools>=61.2",
+]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = [
+    "tiki_topple",
+]
+include-package-data = true
+
+[tool.setuptools.package-data]
+tiki_topple = [
+    "py.typed",
+]
+
+[tool.mypy]
+strict = true
+warn_unreachable = true
+disallow_any_unimported = true
+extra_checks = true
+enable_error_code = "explicit-override,ignore-without-code"
+
+[tool.ruff]
+target-version = "py313"
+lint.select = ["ALL"]
+lint.ignore = [
+	"ANN401",  # Dynamically typed expressions (typing.Any) are disallowed
+	"C901",    # function is too complex (12 > 10)
+	"COM812",  # Trailing comma missing
+	"D",       # Docstring rules
+	"EM101",   # Exception must not use a string literal, assign to variable first
+	"EM102",   # Exception must not use an f-string literal, assign to variable first
+	"ERA001",  # Found commented-out code
+	"FBT001",  # Boolean positional arg in function definition
+	"FBT002",  # Boolean default value in function definition
+	"FBT003",  # Boolean positional value in function call
+	"FIX002",  # Line contains TODO
+	"PLR0911", # Too many return statements (11 > 6)
+	"PLR2004", # Magic value used in comparison, consider replacing 2 with a constant variable
+	"PLR0912", # Too many branches
+	"PLR0913", # Too many arguments to function call
+	"PLR0915", # Too many statements
+	"S101",    # Use of `assert` detected
+	"S311",    # Standard pseudo-random generators are not suitable for cryptographic purposes
+	"T201",    # print() found
+	"T203",    # pprint() found
+	"TD002",  # Missing author in TODO; try: `# TODO(<author_name>): ...`
+	"TD003",  # Missing issue link on the line following this TODO
+	"TD005",  # Missing issue description after `TODO`
+	"TRY003", # Avoid specifying long messages outside the exception class
+
+	# tiki-topple-specific ignores
+]
